@@ -8,6 +8,7 @@
 	<arg name="ur_ip" default="localhost"/>
 	<arg name="env-script" default="$(find cob_bringup)/env.sh"/>
 	<arg name="sim" default="false"/>
+	<arg name="pkg_hardware_config" default="$(find cob_hardware_config)"/>
 
 	<!-- upload robot description -->
 	<include file="$(find cob_hardware_config)/upload_robot.launch">
@@ -66,6 +67,7 @@
 			<arg name="robot_ip" value="$(arg ur_ip)"/>
 			<arg name="sim" value="$(arg sim)"/>
 			<arg if="$(arg sim)" name="cartesian_control" value="false"/>
+			<arg name="pkg_hardware_config" value="$(arg pkg_hardware_config)"/>
 		</include>
 
 		<!-- start common nodes used in hardware and simulation -->
