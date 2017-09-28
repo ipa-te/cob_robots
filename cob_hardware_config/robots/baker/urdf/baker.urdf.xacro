@@ -8,9 +8,10 @@
   <!-- baker_arm -->
   <xacro:include filename="$(find cob_description)/urdf/baker_arm/baker_arm.urdf.xacro" />
 
-
   <!-- Used for fixing robot to Gazebo -->
-  <link name="world"/>
+  <link name="world">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </link>
 
   <xacro:baker name="arm" parent="world">
     <origin xyz="0 0 0" rpy="0 0 0" />
