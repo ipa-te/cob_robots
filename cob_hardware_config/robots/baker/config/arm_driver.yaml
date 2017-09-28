@@ -1,0 +1,38 @@
+name: arm
+
+sync:
+  interval_ms: 10
+  overflow: 0
+
+defaults:
+  eds_pkg: cob_hardware_config
+  eds_file: "robots/common/Elmo.dcf"
+  
+  # canopen_chain_node settings ..
+  motor_allocator: canopen::Motor402::Allocator # select allocator for motor layer
+  
+  motor_layer:  # settings passed to motor layer (plugin-specific)
+    switching_state: 4 # stop motor before switching state
+    
+  dcf_overlay:
+
+    "6098": "17" # homing method    
+    "6099sub1": "550"
+    "6099sub2": "550" 
+    "609A": "100000" # homing acceleration
+    
+  pos_to_device: "rint(pos)" # rad -> mdeg
+  pos_from_device: "deg2rad(obj6064)/1000" # actual position [mdeg] -> rad
+  
+  vel_to_device: "rint(vel)" # rad/s -> mdeg/s
+  vel_from_device: "obj606C" # actual velocity [mdeg/s] -> rad/s
+  
+  eff_to_device: "rint(eff)" # just round to integer
+  eff_from_device: "obj6077" # torque actual value
+  
+   
+        
+nodes:
+  arm_prismatic_joint:
+    id: 127
+    
