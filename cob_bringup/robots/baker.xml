@@ -18,5 +18,9 @@
         <arg name="can_device" value="can0"/>
         <arg name="sim" value="$(arg sim)"/>
     </include>
+    
+    <include file="$(find cob_bringup)/tools/robot_state_publisher.launch">
+        <arg name="robot" value="$(arg robot)"/>
+    </include>
   
 </launch>
