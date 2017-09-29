@@ -25,7 +25,7 @@ defaults:
   eff_from_device: "obj6077" # torque actual value        
         
 nodes:
-  arm_prismatic_joint:
+  arm_joint_1:
     id: 127
     
     pos_to_device: "rint(pos * 4233.301975541)" # m -> halfdegree
