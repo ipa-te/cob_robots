@@ -16,23 +16,20 @@ defaults:
     
   dcf_overlay:
 
-    "6098": "17" # homing method    
-    "6099sub1": "550"
-    "6099sub2": "550" 
-    "609A": "100000" # homing acceleration
+    "6098": "17"      # homing method    
+    "6099sub1": "500" # homing speed during search for switch
+    "609A": "100000"  # homing acceleration
+    "607C" : "250"    # home offset   
     
-  pos_to_device: "rint(pos)" # rad -> mdeg
-  pos_from_device: "deg2rad(obj6064)/1000" # actual position [mdeg] -> rad
-  
-  vel_to_device: "rint(vel)" # rad/s -> mdeg/s
-  vel_from_device: "obj606C" # actual velocity [mdeg/s] -> rad/s
-  
-  eff_to_device: "rint(eff)" # just round to integer
-  eff_from_device: "obj6077" # torque actual value
-  
-   
+  eff_to_device: "rint(eff)" # torque
+  eff_from_device: "obj6077" # torque actual value        
         
 nodes:
   arm_prismatic_joint:
     id: 127
     
+    pos_to_device: "rint(pos * 4233.301975541)" # m -> halfdegree
+    pos_from_device: "obj6064 / 4233.301975541" # actual position [halfdegree] -> m
+    
+    vel_to_device: "rint(vel * 4233.301975541)" # m/s -> halfdegree/s
+    vel_from_device: "obj606C / 4233.301975541" # actual velocity [halfdegree/s] -> m/s
