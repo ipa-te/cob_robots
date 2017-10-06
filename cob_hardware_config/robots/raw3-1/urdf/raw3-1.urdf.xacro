@@ -16,13 +16,9 @@
 
   <!-- torso -->
   <xacro:include filename="$(find raw_description)/urdf/torso/torso_v2.urdf.xacro" />
- />
 
-  <!-- ur_arm 
-  <xacro:include filename="$(find raw_description)/urdf/ur_arm/ur10_arm.urdf.xacro" />
-  -->
-  <!-- p-rob_arm -->
-  <xacro:include filename="$(find raw_description)/urdf/p_rob/p_rob.urdf.xacro" />
+  <!-- p_rob_arm -->
+  <xacro:include filename="$(find raw_description)/urdf/p_rob_arm/p_rob.urdf.xacro" />
 
   <!-- vacuum gripper -->
   <xacro:include filename="$(find raw_description)/urdf/vacuum_gripper/gripper.urdf.xacro" />
@@ -32,11 +28,14 @@
 
 
   <!-- composition of the robot -->
+  
   <xacro:raw_base name="base"/>
+  
   <!-- base laser front -->
   <xacro:sick_s300_laser_v0 name="base_laser_front" parent="base">
     <origin xyz="${laser_front_x} ${laser_front_y} ${laser_front_z}" rpy="${laser_front_roll} ${laser_front_pitch} ${laser_front_yaw}" />
   </xacro:sick_s300_laser_v0>
+  
   <!-- base laser rear -->
   <xacro:sick_s300_laser_v0 name="base_laser_rear" parent="base">
     <origin xyz="${laser_rear_x} ${laser_rear_y} ${laser_rear_z}" rpy="${laser_rear_roll} ${laser_rear_pitch} ${laser_rear_yaw}" />
