@@ -1,5 +1,6 @@
 controller_list:
   - name: fake_controller
+    type: PRobController
     joints:
       - joint1
       - joint2
