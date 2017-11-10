@@ -11,25 +11,29 @@ defaults:
   # canopen_chain_node settings ..
   motor_allocator: canopen::Motor402::Allocator # select allocator for motor layer
   
-  motor_layer:  # settings passed to motor layer (plugin-specific)
-    switching_state: 4 # stop motor before switching state
+  #motor_layer:  # settings passed to motor layer (plugin-specific)
+    #switching_state: 5 # stop motor before switching state
     
-  dcf_overlay:
-
-    "6098": "17"      # homing method    
-    "6099sub1": "500" # homing speed during search for switch
-    "609A": "100000"  # homing acceleration
-    "607C" : "250"    # home offset   
-    
-  eff_to_device: "rint(eff)" # torque
-  eff_from_device: "obj6077" # torque actual value        
+  pos_to_device: "rint(rad2deg(pos - 0.17)*80)" # rad -> mdeg
+  pos_from_device: "deg2rad(obj6064)/80 + 0.17" # actual position [mdeg] -> rad
+  
+  vel_to_device: "rint(rad2deg(vel)*80)" # rad/s -> mdeg/s
+  vel_from_device: "deg2rad(obj606C)/80" # actual velocity [mdeg/s] -> rad/s
+  
+  eff_to_device: "rint(eff)"
+  eff_from_device: "obj6077"    
         
 nodes:
-  arm_joint_1:
-    id: 127
+  #- name: arm_joint_2
+  #  id: 10
+  #- name: arm_joint_3
+  #  id: 20
+  - name: arm_joint_4
+    id: 40
+    pos_to_device: "rint(rad2deg(pos - 0.17)*80)" # rad -> mdeg
+    pos_from_device: "deg2rad(obj6064)/80 + 0.17" # actual position [mdeg] -> rad
     
-    pos_to_device: "rint(pos * 4233.301975541)" # m -> halfdegree
-    pos_from_device: "obj6064 / 4233.301975541" # actual position [halfdegree] -> m
-    
-    vel_to_device: "rint(vel * 4233.301975541)" # m/s -> halfdegree/s
-    vel_from_device: "obj606C / 4233.301975541" # actual velocity [halfdegree/s] -> m/s
+  - name: arm_joint_5
+    id: 30
+    pos_to_device: "rint(rad2deg(pos + 1.52)*80)" # rad -> mdeg
+    pos_from_device: "deg2rad(obj6064)/80 - 1.52" # actual position [mdeg] -> rad
