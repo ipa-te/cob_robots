@@ -31,22 +31,11 @@ joint_group_position_controller:
      - arm_joint_1
   required_drive_mode: 1
 
-arm_prismatic_joint_position_controller:
-  type: position_controllers/JointPositionController
-  joint: arm_joint_1
-  required_drive_mode: 1
-
-
 ## velocity controller
 joint_group_velocity_controller:
   type: velocity_controllers/JointGroupVelocityController
   joints:
      - arm_joint_1
-  required_drive_mode: 2
-
-arm_prismatic_joint_velocity_controller:
-  type: velocity_controllers/JointVelocityController
-  joint: arm_joint_1
   required_drive_mode: 2
 
 ## effort controller
@@ -55,9 +44,3 @@ joint_group_effort_controller:
   joints:
      - arm_joint_1
   required_drive_mode: 4
-
-arm_prismatic_joint_effort_controller:
-  type: effort_controllers/JointEffortController
-  joint: arm_joint_1
-  required_drive_mode: 4
-
