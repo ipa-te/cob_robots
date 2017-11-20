@@ -52,14 +52,9 @@ joint_group_velocity_controller:
   
 ## effort controllers
 
-arm_joint_4_joint_effort_controller:
+gripper_effort_controller:
   type: effort_controllers/JointEffortController
-  joint: arm_joint_4
-  required_drive_mode: 4
-  
-arm_joint_3_joint_effort_controller:
-  type: effort_controllers/JointEffortController
-  joint: arm_joint_3
+  joint: arm_big_finger_left_join
   required_drive_mode: 4
   
   
