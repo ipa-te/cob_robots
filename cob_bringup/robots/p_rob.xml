@@ -12,16 +12,19 @@
         <arg name="robot" value="$(arg robot)"/>
     </include>
 	
-	<include if="$(arg cartesian_control)" file="$(find cob_bringup)/controllers/generic_cartesian_controller.launch">
-		<arg name="robot" value="$(arg robot)"/>
-		<arg name="component_name" value="$(arg component_name)"/>
-		<arg name="debug" value="false"/>
-	</include>
-    
     <group if="$(arg sim)">
 	    <include file="$(find cob_bringup)/tools/robot_state_publisher.launch">
 	        <arg name="robot" value="$(arg robot)"/>
 	    </include>
+	    <include file="$(find cob_bringup)/controllers/generic_controller.launch">
+			<arg name="robot" value="$(arg robot)"/>
+			<arg name="component_name" value="$(arg component_name)"/>
+		</include>
+	    <include if="$(arg cartesian_control)" file="$(find cob_bringup)/controllers/generic_cartesian_controller.launch">
+			<arg name="robot" value="$(arg robot)"/>
+			<arg name="component_name" value="$(arg component_name)"/>
+			<arg name="debug" value="false"/>
+		</include>
 	</group>
   
 </launch>
