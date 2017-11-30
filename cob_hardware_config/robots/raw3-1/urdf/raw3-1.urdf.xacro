@@ -50,7 +50,7 @@
   </xacro:raw_torso_v2>
 
   <xacro:p_rob name="arm" parent="base_link">
-    <origin xyz="${arm_x} ${arm_y} ${arm_z}" rpy="${arm_roll} ${arm_pitch} ${arm_yaw - 0.349066}" />
+    <origin xyz="${arm_x} ${arm_y} ${arm_z}" rpy="${arm_roll} ${arm_pitch} ${arm_yaw - 3.49066}" />
   </xacro:p_rob>
 
 </robot>
