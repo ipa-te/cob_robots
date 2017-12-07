@@ -5,7 +5,6 @@
 	<arg name="robot" value="raw3-1"/>
 	<arg name="pc1" default="localhost"/>
 	<arg name="pc2" default="localhost"/>
-	<arg name="ur_ip" default="localhost"/>
 	<arg name="env-script" default="$(find cob_bringup)/env.sh"/>
 	<arg name="sim" default="false"/>
 	<arg name="pkg_hardware_config" default="$(find cob_hardware_config)"/>
@@ -58,14 +57,6 @@
 			<arg name="can_device" value="can0"/>
 			<arg name="sim" value="$(arg sim)"/>
 			<arg name="cartesian_control" value="true"/>
-		</include>
-		<include file="$(find cob_bringup)/drivers/ur.launch">
-			<arg name="robot" value="$(arg robot)"/>
-			<arg name="use_modern_driver" value="false"/>
-			<arg name="robot_ip" value="$(arg ur_ip)"/>
-			<arg name="sim" value="$(arg sim)"/>
-			<arg if="$(arg sim)" name="cartesian_control" value="false"/>
-			<arg name="pkg_hardware_config" value="$(arg pkg_hardware_config)"/>
 		</include>
 
 		<!-- start common nodes used in hardware and simulation -->
