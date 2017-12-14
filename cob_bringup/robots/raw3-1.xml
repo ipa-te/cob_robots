@@ -51,6 +51,13 @@
 			<arg name="can_device" value="can2" />
 			<arg name="sim" value="$(arg sim)"/>
 		</include>
+		
+		<include if="$(arg sim)" file="$(find cob_bringup)/controllers/generic_controller.launch">
+			<arg name="robot" value="$(arg robot)"/>
+			<arg name="component_name" value="arm"/>
+			<arg name="pkg_hardware_config" value="$(arg pkg_hardware_config)"/>
+		</include>
+		
 		<include file="$(find cob_bringup)/components/canopen_generic.launch">
 			<arg name="robot" value="$(arg robot)"/>
 			<arg name="component_name" value="torso"/>
