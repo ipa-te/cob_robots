@@ -13,13 +13,15 @@ defaults:
   
   motor_layer:  # settings passed to motor layer (plugin-specific)
     switching_state: 4 # stop motor before switching state
-    
-  dcf_overlay:
-
-    "6098": "17"      # homing method    
-    "6099sub1": "500" # homing speed during search for switch
-    "609A": "100000"  # homing acceleration
-    "607C" : "250"    # home offset   
+   
+  # !!!!!!!!!!!!!!!!!!!!!!!!!!!!! BEFORE UNCOMMENTING HOMIG VALUES MAKE SURE THAT SENSORS ARE PROPERLY CONNECTED TO THE DRIVE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  #dcf_overlay:
+  #  #"6098": "17"      # homing method    
+  #  #"6099sub1": "500" # homing speed during search for switch
+  #  #"609A": "100000"  # homing acceleration
+  #  #"607C" : "250"    # home offset   
+  ################################################################################################################################################################
+  
     
   eff_to_device: "rint(eff)" # torque
   eff_from_device: "obj6077" # torque actual value        
@@ -27,7 +29,7 @@ defaults:
 nodes:
   arm_joint_1:
     id: 127
-    
+
     pos_to_device: "rint(pos * 4233.301975541)" # m -> halfdegree
     pos_from_device: "obj6064 / 4233.301975541" # actual position [halfdegree] -> m
     
